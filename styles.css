@@ -1,0 +1,463 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    line-height: 1.5;
+    font-family: sans-serif;
+    overflow-wrap: anywhere;
+    color: black;
+    background-color: #7fa4e3;
+}
+
+button,
+input[type="submit"] {
+    text-align: center;
+    margin: 4px 2px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 10px;
+    background: navy;
+    box-shadow: inset 0 -0.15rem 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    outline: none;
+    background: #04e004;
+}
+
+.menu-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    background: navy;
+}
+
+.menu-bar button.active {
+    background: #04e004;
+}
+
+
+.nav-external-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.nav-admin,
+.nav-student {
+    padding: 8px 16px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-admin {
+    background: #5b4b8a;
+}
+
+.nav-student {
+    background: #147d8c;
+}
+
+.nav-admin:hover,
+.nav-student:hover {
+    background: #04e004;
+}
+
+.column {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#toast {
+    visibility: hidden;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: white;
+    z-index: 1000;
+}
+
+.toast.show {
+    visibility: visible;
+}
+
+.toast-success { background: #27ae60; }
+.toast-error { background: #c0392b; }
+
+.narrow-form {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.question {
+    text-align: left;
+    margin: 20px 0;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.question h3 {
+    margin-top: 0;
+}
+
+.question-illustration {
+    display: block;
+    max-width: 100%;
+    max-height: 250px;
+    margin: 8px 0;
+}
+
+.hotspot-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.hotspot-image {
+    max-width: 100%;
+    cursor: crosshair;
+    display: block;
+}
+
+.hotspot-marker {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(230, 30, 30, 0.8);
+    border: 2px solid white;
+    pointer-events: none;
+}
+
+.hint {
+    font-style: italic;
+    color: #555;
+}
+
+.region-box {
+    position: absolute;
+    border: 2px solid #e63232;
+    background: rgba(230, 50, 50, 0.15);
+    box-sizing: border-box;
+}
+
+.region-preview {
+    border-style: dashed;
+}
+
+.region-remove {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background: #e63232;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+}
+
+#regionEditorImg {
+    cursor: crosshair;
+}
+
+.image-picker-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.image-picker-panel {
+    background: white;
+    border-radius: 8px;
+    padding: 16px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.image-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.image-picker-thumb {
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    padding: 4px;
+    text-align: center;
+}
+
+.image-picker-thumb:hover {
+    border-color: navy;
+    background: #f0f4ff;
+}
+
+.image-picker-thumb img {
+    width: 100%;
+    height: 80px;
+    object-fit: contain;
+    display: block;
+}
+
+.image-picker-thumb span {
+    display: block;
+    font-size: 11px;
+    color: #555;
+    word-break: break-all;
+    margin-top: 4px;
+}
+
+#attemptDetailArea pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 0;
+    font-size: 12px;
+}
+
+.drag-drop-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.drag-item-bank {
+    flex: 0 0 240px;
+    padding: 12px;
+    border: 2px solid navy;
+    border-radius: 10px;
+    background: #eef4ff;
+    min-height: 120px;
+}
+
+.drag-bank-title {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.drag-zones {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.drag-zone {
+    min-height: 140px;
+    padding: 10px;
+    border: 3px dashed navy;
+    border-radius: 10px;
+    background: #dce8fa;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.drag-zone-title {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.drag-zone.drag-over,
+.drag-item-bank.drag-over {
+    background: #c8f7c8;
+    border-color: #04e004;
+}
+
+.drag-item {
+    padding: 9px 12px;
+    margin: 6px 0;
+    border-radius: 8px;
+    background: navy;
+    color: white;
+    font-weight: bold;
+    cursor: grab;
+    box-shadow: inset 0 -0.15rem 0 rgba(0, 0, 0, 0.2);
+    user-select: none;
+}
+
+.drag-item:hover {
+    background: #04e004;
+}
+
+.drag-item:active,
+.drag-item.dragging {
+    cursor: grabbing;
+    opacity: 0.5;
+}
+
+.drag-zone .drag-item {
+    background: #147d8c;
+}
+
+.drag-zone .drag-item:hover {
+    background: #04e004;
+}
+
+@media (max-width: 700px) {
+    .drag-drop-container {
+        flex-direction: column;
+    }
+
+    .drag-item-bank {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .drag-zones {
+        width: 100%;
+    }
+}
+
+.fill-blank-prompt {
+    margin-top: 10px;
+    line-height: 2;
+    text-align: left;
+}
+
+.inline-blank {
+    display: inline-block;
+    width: 110px;
+    height: 26px;
+    margin: 0 5px;
+    padding: 0 2px;
+    border: none;
+    border-bottom: 2px solid #333;
+    border-radius: 0;
+    background: transparent;
+    outline: none;
+    vertical-align: baseline;
+    font-size: inherit;
+    font-family: inherit;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.inline-blank:focus {
+    border-bottom-color: navy;
+}
+.verb-table {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #d5d9de;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    font-size: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.verb-table th,
+.verb-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e1e4e8;
+    text-align: center;
+}
+
+.verb-table th {
+    background: #f1f3f5;
+    font-weight: 600;
+    color: #333;
+}
+
+.verb-table td:first-child {
+    font-weight: 500;
+    text-align: left;
+}
+
+.verb-table tr:last-child td {
+    border-bottom: none;
+}
+
+.verb-table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.verb-table tbody tr:hover {
+    background: #f5f7f9;
+}
+
+.verb-table .inline-blank {
+    width: 100px;
+    margin: 0;
+}
+
+.banner {
+    display: inline-block;
+    margin: 15px;
+    border: 2px solid #d5d9df;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+    cursor: pointer;
+    vertical-align: top;
+}
+
+.banner img {
+    display: block;
+    height: 100px;
+    width: auto;
+    max-width: 100%;
+}
+
+.banner:hover {
+    transform: translateY(-5px);
+    border-color: #777;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.banner:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.banner:focus-visible {
+    outline: 3px solid #4a90e2;
+    outline-offset: 3px;
+}
